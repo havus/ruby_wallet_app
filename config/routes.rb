@@ -11,7 +11,17 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
+      namespace :auth do
+        resources :sign_up, only: :create
+        resources :sign_in, only: :create
+      end
       resources :users, only: [:index, :show]
+
+      namespace :wallets do
+        resources :deposit, only: :create
+        resources :withdraw, only: :create
+        resources :transfer, only: :create
+      end
     end
   end
 end
