@@ -17,11 +17,12 @@ Rails.application.routes.draw do
       end
       resources :users, only: [:index, :show]
 
-      namespace :wallets do
+      namespace :wallet_transactions do
         resources :deposit, only: :create
         resources :withdraw, only: :create
         resources :transfer, only: :create
       end
+      resources :wallets, only: [:create, :show]
     end
   end
 end
