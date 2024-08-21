@@ -18,7 +18,7 @@ class Transaction < ApplicationRecord
 
   def wallets_present
     if wallet_source.nil? && wallet_destination.nil?
-      errors.add(:base, "Either wallet_source or wallet_destination must be present")
+      errors.add(:base, 'Either wallet_source or wallet_destination must be present')
     end
   end
 end
