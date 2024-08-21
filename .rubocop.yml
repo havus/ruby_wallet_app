@@ -10,3 +10,7 @@ Layout/SpaceInsideArrayLiteralBrackets:
 Style/StringLiterals:
   Enabled: true
   EnforcedStyle: single_quotes
+
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma

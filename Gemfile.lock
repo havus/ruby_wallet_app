@@ -75,6 +75,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     base64 (0.2.0)
+    bcrypt (3.1.20)
     bigdecimal (3.1.8)
     bindex (0.8.1)
     bootsnap (1.18.4)
@@ -82,6 +83,7 @@ GEM
     brakeman (6.1.2)
       racc
     builder (3.3.0)
+    byebug (11.1.3)
     capybara (3.40.0)
       addressable
       matrix
@@ -108,6 +110,8 @@ GEM
     factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
+    faker (3.4.2)
+      i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
       activesupport (>= 6.1)
     i18n (1.14.5)
@@ -298,13 +302,16 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bcrypt (~> 3.1, >= 3.1.12)
   bootsnap
   brakeman
+  byebug (~> 11.1, >= 11.1.3)
   capybara
   debug
   dotenv
   error_highlight (>= 0.4.0)
   factory_bot_rails (~> 6.4)
+  faker
   jbuilder
   mysql2 (~> 0.5)
   puma (>= 5.0)

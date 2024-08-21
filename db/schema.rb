@@ -20,38 +20,36 @@ ActiveRecord::Schema[7.2].define(version: 2024_08_21_073058) do
   create_table "teams", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "hash_password"
+    t.string "password_hash"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "transaction_logs", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+  create_table "transaction_entries", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "transaction_group_id"
     t.bigint "wallet_id"
-    t.bigint "transaction_id"
-    t.integer "log_type"
+    t.integer "entry_type"
     t.decimal "amount", precision: 38, scale: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["transaction_id"], name: "index_transaction_logs_on_transaction_id"
-    t.index ["wallet_id", "log_type"], name: "index_transaction_logs_on_wallet_id_and_log_type"
-    t.index ["wallet_id"], name: "index_transaction_logs_on_wallet_id"
+    t.index ["transaction_group_id"], name: "index_transaction_entries_on_transaction_group_id"
+    t.index ["wallet_id", "entry_type"], name: "index_transaction_entries_on_wallet_id_and_entry_type"
   end
 
-  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
-    t.bigint "wallet_source_id"
-    t.bigint "wallet_destination_id"
+  create_table "transaction_groups", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
+    t.bigint "source_wallet_id"
+    t.bigint "target_wallet_id"
     t.string "note"
     t.integer "status"
     t.integer "transaction_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["wallet_source_id", "wallet_destination_id"], name: "index_transactions_on_wallet_source_and_destination"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "hash_password"
+    t.string "password_hash"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

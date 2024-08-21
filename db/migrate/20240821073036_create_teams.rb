@@ -3,7 +3,7 @@ class CreateTeams < ActiveRecord::Migration[7.2]
     create_table :teams, if_not_exists: true do |t|
       t.string :name
       t.string :email
-      t.string :hash_password
+      t.string :password_hash
 
       t.timestamps
     end
