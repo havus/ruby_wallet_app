@@ -14,3 +14,7 @@ Style/StringLiterals:
 Style/TrailingCommaInArrayLiteral:
   Enabled: true
   EnforcedStyleForMultiline: consistent_comma
+
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
