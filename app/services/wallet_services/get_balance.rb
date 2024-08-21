@@ -9,27 +9,15 @@ module WalletServices
 
     attr_reader :errors, :result
 
-    # @params [Integer] wallet_id
+    # @params [Integer] wallet
     # @return Decimal
-    def perform(wallet_id)
-      wallet = get_wallet(wallet_id)
-      return if wallet.blank?
-
-      @result = credit_amount(wallet_id) - debit_amount(wallet_id)
+    def perform(wallet)
+      @result = credit_amount(wallet.id) - debit_amount(wallet.id)
 
       @errors.blank?
     end
 
     private
-
-    # @params [Integer] wallet_id
-    # @return Wallet
-    def get_wallet(wallet_id)
-      Wallet.find(wallet_id)
-    rescue ActiveRecord::RecordNotFound
-      @errors << 'Wallet not found'
-      nil
-    end
 
     # @params [Integer] wallet_id
     # @return Decimal

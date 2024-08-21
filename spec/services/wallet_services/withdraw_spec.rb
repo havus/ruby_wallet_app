@@ -2,22 +2,26 @@
 
 require 'rails_helper'
 
-RSpec.describe WalletServices::Deposit do
+RSpec.describe WalletServices::Withdraw do
   describe '#perform' do
-    let_it_be(:wallet) { create(:wallet) }
+    let_it_be(:wallet, reload: true) { create(:wallet) }
 
     let(:payload) do
       {
         wallet_id: wallet.id,
-        amount: 100.00,
-        note: 'Deposit for testing',
+        amount: 50.00,
+        note: 'Withdraw for testing',
       }
     end
     let(:errors) { double(:errors, full_messages: []) }
 
     subject { described_class.new }
 
-    context 'when the wallet exists' do
+    context 'when the wallet exists and has sufficient funds' do
+      before do
+        allow_any_instance_of(WalletServices::GetBalance).to receive(:perform).with(wallet).and_return(100.00)
+      end
+
       it 'creates a transaction group and transaction entry' do
         expect {
           subject.perform(payload)
@@ -27,12 +31,12 @@ RSpec.describe WalletServices::Deposit do
         expect(subject.errors).to be_empty
       end
 
-      it 'sets the transaction group to completed and deposit' do
+      it 'sets the transaction group to completed and withdraw' do
         subject.perform(payload)
         transaction_group = TransactionGroup.last
 
         expect(transaction_group.status).to eq('completed')
-        expect(transaction_group.transaction_type).to eq('deposit')
+        expect(transaction_group.transaction_type).to eq('withdraw')
       end
 
       it 'creates a transaction entry with the correct amount' do
@@ -40,7 +44,7 @@ RSpec.describe WalletServices::Deposit do
         transaction_entry = TransactionEntry.last
 
         expect(transaction_entry.amount).to eq(payload[:amount])
-        expect(transaction_entry.entry_type).to eq('credit')
+        expect(transaction_entry.entry_type).to eq('debit')
       end
     end
 
@@ -59,8 +63,24 @@ RSpec.describe WalletServices::Deposit do
       end
     end
 
+    context 'when the wallet has insufficient funds' do
+      before do
+        allow_any_instance_of(WalletServices::GetBalance).to receive(:perform).with(wallet).and_return(30.00)
+      end
+
+      it 'adds an error and does not create any records' do
+        expect {
+          subject.perform(payload)
+        }.to change { TransactionGroup.count }.by(0)
+        .and change { TransactionEntry.count }.by(0)
+
+        expect(subject.errors).to include('Insufficient funds')
+      end
+    end
+
     context 'when there is an error saving the transaction group' do
       before do
+        allow_any_instance_of(WalletServices::GetBalance).to receive(:perform).with(wallet).and_return(100.00)
         allow_any_instance_of(TransactionGroup).to receive(:save).and_return(false)
         allow_any_instance_of(TransactionGroup).to receive(:errors).and_return(errors)
         allow(errors).to receive(:full_messages).and_return(['Dummy Error 1'])
@@ -75,7 +95,7 @@ RSpec.describe WalletServices::Deposit do
         expect(subject.errors).to match_array(['transaction_group_error: Dummy Error 1'])
       end
 
-      it 'set transaction_group to nil' do
+      it 'sets transaction_group to nil' do
         subject.perform(payload)
         expect(subject.transaction_group).to be_nil
       end
@@ -83,6 +103,7 @@ RSpec.describe WalletServices::Deposit do
 
     context 'when there is an error saving the transaction entry' do
       before do
+        allow_any_instance_of(WalletServices::GetBalance).to receive(:perform).with(wallet).and_return(100.00)
         allow_any_instance_of(TransactionEntry).to receive(:save).and_return(false)
         allow_any_instance_of(TransactionEntry).to receive(:errors).and_return(errors)
         allow(errors).to receive(:full_messages).and_return(['Dummy Error 2'])
@@ -97,7 +118,7 @@ RSpec.describe WalletServices::Deposit do
         expect(subject.errors).to match_array(['transaction_entry_error: Dummy Error 2'])
       end
 
-      it 'set transaction_group.id to nil' do
+      it 'sets transaction_group.id to nil' do
         subject.perform(payload)
         expect(subject.transaction_group.id).to be_nil
       end
