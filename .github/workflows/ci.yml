@@ -20,8 +20,7 @@ jobs:
           bundler-cache: true
 
       - name: Bundle install
-        run: bundle config set frozen true
-        run: bundle install --jobs 4
+        run: bundle config set frozen true && bundle install --jobs 4
 
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
@@ -39,8 +38,7 @@ jobs:
           bundler-cache: true
 
       - name: Bundle install
-        run: bundle config set frozen true
-        run: bundle install --jobs 4
+        run: bundle config set frozen true && bundle install --jobs 4
 
       - name: Lint code for consistent style
         run: bin/rubocop -f github
@@ -77,8 +75,7 @@ jobs:
           bundler-cache: true
 
       - name: Bundle install
-        run: bundle config set frozen true
-        run: bundle install --jobs 4
+        run: bundle config set frozen true && bundle install --jobs 4
 
       - name: Run tests
         env:
