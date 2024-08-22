@@ -19,6 +19,12 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Update Bundler
+        run: gem install bundler -v '2.5.17'
+
+      - name: Install error_highlight
+        run: gem install error_highlight -v '0.6.0'
+
       - name: Bundle install
         run: bundle config set frozen true && bundle install --jobs 4
 
@@ -36,6 +42,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Update Bundler
+        run: gem install bundler -v '2.5.17'
+
+      - name: Install error_highlight
+        run: gem install error_highlight -v '0.6.0'
 
       - name: Bundle install
         run: bundle config set frozen true && bundle install --jobs 4
@@ -73,6 +85,12 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Update Bundler
+        run: gem install bundler -v '2.5.17'
+
+      - name: Install error_highlight
+        run: gem install error_highlight -v '0.6.0'
 
       - name: Bundle install
         run: bundle config set frozen true && bundle install --jobs 4
