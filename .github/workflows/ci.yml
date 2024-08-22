@@ -19,6 +19,9 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
+      - name: Bundle install
+        run: bundle install --jobs 4
+
       - name: Scan for common Rails security vulnerabilities using static analysis
         run: bin/brakeman --no-pager
 
@@ -33,6 +36,9 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Bundle install
+        run: bundle install --jobs 4
 
       - name: Lint code for consistent style
         run: bin/rubocop -f github
@@ -67,6 +73,9 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+
+      - name: Bundle install
+        run: bundle install --jobs 4
 
       - name: Run tests
         env:
