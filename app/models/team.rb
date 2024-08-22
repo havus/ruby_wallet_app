@@ -16,13 +16,24 @@ class Team < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true
   validates :password_hash, presence: true
+  validates :password, presence: true, if: :password_required?
 
   def password
+    return if password_hash.blank?
+
     @password ||= Password.new(password_hash)
   end
 
   def password=(new_password)
+    return if new_password.blank?
+
     @password = Password.create(new_password)
     self.password_hash = @password
+  end
+
+  private
+
+  def password_required?
+    password_hash.blank? || @password.present?
   end
 end

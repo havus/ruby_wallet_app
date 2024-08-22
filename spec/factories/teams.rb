@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :team do
-    name { 'Team Alpha' }
-    email { 'teamalpha@example.com' }
+    name { "Team #{Faker::Name.name}" }
+    email { Faker::Internet.email }
     password_hash { 'password_hash' }
   end
 end

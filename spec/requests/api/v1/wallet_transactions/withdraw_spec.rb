@@ -12,8 +12,8 @@ RSpec.describe 'Api::V1::WalletTransactions::Withdraw', type: :request do
           withdraw: {
             wallet_id: wallet.id,
             amount: 50.00,
-            note: 'Withdraw for testing'
-          }
+            note: 'Withdraw for testing',
+          },
         }
       end
 
@@ -37,8 +37,8 @@ RSpec.describe 'Api::V1::WalletTransactions::Withdraw', type: :request do
           withdraw: {
             wallet_id: 0,
             amount: 50.00,
-            note: 'Invalid withdraw'
-          }
+            note: 'Invalid withdraw',
+          },
         }
       end
 

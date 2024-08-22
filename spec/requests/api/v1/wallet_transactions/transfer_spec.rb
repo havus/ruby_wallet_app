@@ -14,8 +14,8 @@ RSpec.describe 'Api::V1::WalletTransactions::Transfer', type: :request do
             source_wallet_id: source_wallet.id,
             target_wallet_id: target_wallet.id,
             amount: 50.00,
-            note: 'Transfer for testing'
-          }
+            note: 'Transfer for testing',
+          },
         }
       end
 
@@ -40,8 +40,8 @@ RSpec.describe 'Api::V1::WalletTransactions::Transfer', type: :request do
             source_wallet_id: 0,
             target_wallet_id: target_wallet.id,
             amount: 50.00,
-            note: 'Invalid transfer'
-          }
+            note: 'Invalid transfer',
+          },
         }
       end
 

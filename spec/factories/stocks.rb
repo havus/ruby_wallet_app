@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :stock do
-    name { 'Stock A' }
+    name { "Stock #{Faker::Name.name}" }
   end
 end

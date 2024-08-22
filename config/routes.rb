@@ -15,7 +15,9 @@ Rails.application.routes.draw do
         resources :sign_up, only: :create
         resources :sign_in, only: :create
       end
-      resources :users, only: [:index, :show]
+      resources :users, only: [:index, :show, :create]
+      resources :teams, only: [:index, :show, :create]
+      resources :stocks, only: [:index, :show, :create]
 
       namespace :wallet_transactions do
         resources :deposit, only: :create

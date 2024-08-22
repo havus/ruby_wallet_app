@@ -12,8 +12,8 @@ RSpec.describe 'Api::V1::WalletTransactions::Deposit', type: :request do
           deposit: {
             wallet_id: wallet.id,
             amount: 100.00,
-            note: 'Deposit for testing'
-          }
+            note: 'Deposit for testing',
+          },
         }
       end
 
@@ -33,8 +33,8 @@ RSpec.describe 'Api::V1::WalletTransactions::Deposit', type: :request do
           deposit: {
             wallet_id: 0,
             amount: 100.00,
-            note: 'Invalid deposit'
-          }
+            note: 'Invalid deposit',
+          },
         }
       end
 
