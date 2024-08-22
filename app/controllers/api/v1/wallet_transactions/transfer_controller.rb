@@ -4,6 +4,8 @@ module Api
   module V1
     module WalletTransactions
       class TransferController < ApplicationController
+        skip_before_action :verify_authenticity_token
+
         def create
           service = WalletServices::Transfer.new
           if service.perform(transfer_params)

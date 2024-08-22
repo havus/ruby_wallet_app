@@ -77,4 +77,33 @@ RSpec.describe 'Api::V1::Users', type: :request do
       end
     end
   end
+
+  describe 'GET /api/v1/users/:id/wallet' do
+    let_it_be(:user) { create(:user) }
+    let(:wallet) { create(:wallet, owner: user) }
+
+    context 'when the user has a wallet' do
+      before do
+        allow_any_instance_of(WalletServices::GetBalance).to receive(:perform).with(wallet).and_return(true)
+        allow_any_instance_of(WalletServices::GetBalance).to receive(:result).and_return(100.00)
+      end
+
+      it 'returns the wallet and balance' do
+        get "/api/v1/users/#{user.id}/wallet"
+
+        expect(response).to have_http_status(:ok)
+        expect(JSON.parse(response.body)['wallet']['id']).to eq(wallet.id)
+        expect(JSON.parse(response.body)['balance']).to eq(100.00)
+      end
+    end
+
+    context 'when the user does not have a wallet' do
+      it 'returns a wallet not found error' do
+        get "/api/v1/users/#{user.id}/wallet"
+
+        expect(response).to have_http_status(:not_found)
+        expect(JSON.parse(response.body)['errors']).to eq('Wallet not found')
+      end
+    end
+  end
 end

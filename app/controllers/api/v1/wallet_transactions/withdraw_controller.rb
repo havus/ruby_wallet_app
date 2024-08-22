@@ -4,6 +4,8 @@ module Api
   module V1
     module WalletTransactions
       class WithdrawController < ApplicationController
+        skip_before_action :verify_authenticity_token
+
         def create
           service = WalletServices::Withdraw.new
           if service.perform(withdraw_params)

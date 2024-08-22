@@ -3,6 +3,8 @@
 module Api
   module V1
     class UsersController < ApplicationController
+      skip_before_action :verify_authenticity_token
+
       def index
         users = User.all
         render json: users, status: :ok
@@ -21,6 +23,26 @@ module Api
           render json: { message: 'User created successfully', user: user }, status: :created
         else
           render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      def wallet
+        user = User.find(params[:id])
+        wallet = user.wallet
+
+        if wallet
+          get_balance = WalletServices::GetBalance.new
+          get_balance.perform(wallet)
+
+          render(
+            json: {
+              wallet: wallet,
+              balance: get_balance.result,
+            },
+            status: :ok,
+          )
+        else
+          render json: { errors: 'Wallet not found' }, status: :not_found
         end
       end
 
