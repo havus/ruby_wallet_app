@@ -20,6 +20,7 @@ jobs:
           bundler-cache: true
 
       - name: Bundle install
+        run: bundle config set frozen true
         run: bundle install --jobs 4
 
       - name: Scan for common Rails security vulnerabilities using static analysis
@@ -38,6 +39,7 @@ jobs:
           bundler-cache: true
 
       - name: Bundle install
+        run: bundle config set frozen true
         run: bundle install --jobs 4
 
       - name: Lint code for consistent style
@@ -75,6 +77,7 @@ jobs:
           bundler-cache: true
 
       - name: Bundle install
+        run: bundle config set frozen true
         run: bundle install --jobs 4
 
       - name: Run tests

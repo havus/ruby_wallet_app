@@ -103,6 +103,7 @@ GEM
     diff-lcs (1.5.1)
     dotenv (3.1.2)
     drb (2.2.1)
+    error_highlight (0.6.0)
     erubi (1.13.0)
     factory_bot (6.4.6)
       activesupport (>= 5.0.0)
@@ -308,6 +309,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv
+  error_highlight (>= 0.6.0)
   factory_bot_rails (~> 6.4)
   faker
   jbuilder
