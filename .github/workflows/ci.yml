@@ -98,7 +98,10 @@ jobs:
       - name: Run tests
         env:
           RAILS_ENV: test
+          DB_USERNAME: root
           DATABASE_URL: mysql2://127.0.0.1:3306
+          DB_NAME: wallet_app
+          DB_TEST_NAME: wallet_app_test
           # REDIS_URL: redis://localhost:6379/0
         run: bin/rails db:test:prepare && rspec spec --format documentation
 
