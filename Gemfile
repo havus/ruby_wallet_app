@@ -30,6 +30,7 @@ gem 'bootsnap', require: false
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
 gem 'rack-cors'
+gem 'faraday', '~> 2.10', '>= 2.10.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -62,4 +63,5 @@ group :test do
   gem 'factory_bot_rails', '~> 6.4'
   gem 'test-prof', '~> 1.0'
   gem 'faker'
+  gem 'webmock', '~> 3.23', '>= 3.23.1'
 end

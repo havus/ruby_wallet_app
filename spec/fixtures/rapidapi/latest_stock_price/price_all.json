@@ -1,0 +1,71 @@
+[
+  {
+    "identifier": "NIFTY 50",
+    "change": 11.650000000001455,
+    "dayHigh": 24858.4,
+    "dayLow": 24771.65,
+    "lastPrice": 24823.15,
+    "lastUpdateTime": "23-Aug-2024 16:00:00",
+    "meta": {
+      "companyName": null,
+      "industry": null,
+      "isin": null
+    },
+    "open": 24845.4,
+    "pChange": 0.05,
+    "perChange30d": 1.68,
+    "perChange365d": 28.04,
+    "previousClose": 24811.5,
+    "symbol": "NIFTY 50",
+    "totalTradedValue": 231341087025.81,
+    "totalTradedVolume": 206800655,
+    "yearHigh": 25078.3,
+    "yearLow": 18837.85
+  },
+  {
+    "identifier": "BAJFINANCEEQN",
+    "change": -11.6,
+    "dayHigh": 6762,
+    "dayLow": 6704.95,
+    "lastPrice": 6732,
+    "lastUpdateTime": "23-Aug-2024 15:59:38",
+    "meta": {
+      "companyName": "Bajaj Finance Limited",
+      "industry": "Non Banking Financial Company (NBFC)",
+      "isin": "INE296A13011"
+    },
+    "open": 6755,
+    "pChange": -0.17,
+    "perChange30d": 1.95,
+    "perChange365d": -5.63,
+    "previousClose": 6743.6,
+    "symbol": "BAJFINANCE",
+    "totalTradedValue": 4163732082.2999997,
+    "totalTradedVolume": 618045,
+    "yearHigh": 8192,
+    "yearLow": 6187.8
+  },
+  {
+    "identifier": "HDFCBANKEQN",
+    "change": -6.1,
+    "dayHigh": 1634,
+    "dayLow": 1623,
+    "lastPrice": 1625.2,
+    "lastUpdateTime": "23-Aug-2024 15:59:47",
+    "meta": {
+      "companyName": "HDFC Bank Limited",
+      "industry": "Private Sector Bank",
+      "isin": "INE040A01034"
+    },
+    "open": 1634,
+    "pChange": -0.37,
+    "perChange30d": 1.31,
+    "perChange365d": 2.9,
+    "previousClose": 1631.3,
+    "symbol": "HDFCBANK",
+    "totalTradedValue": 16547643824.93,
+    "totalTradedVolume": 10166711,
+    "yearHigh": 1794,
+    "yearLow": 1363.55
+  }
+]

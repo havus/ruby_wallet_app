@@ -11,6 +11,7 @@ require 'rspec/rails'
 require 'factory_bot'
 require 'test_prof/recipes/rspec/let_it_be'
 require 'faker'
+require 'webmock/rspec'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -36,6 +37,13 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
+
+allowed_sites = [
+  'localhost',
+  '127.0.0.1',
+]
+WebMock.disable_net_connect!(allow: allowed_sites)
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
