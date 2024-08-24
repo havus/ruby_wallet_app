@@ -12,7 +12,7 @@ wallet_owners = []
   user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: Faker::Lorem.characters(number: 10)
+    password: 'admin1234'
   )
   user.save
   wallet_owners << user
@@ -21,7 +21,7 @@ end
   team = Team.new(
     name: Faker::Name.name,
     email: Faker::Internet.email,
-    password: Faker::Lorem.characters(number: 10)
+    password: 'admin1234'
   )
   team.save
   wallet_owners << team

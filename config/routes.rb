@@ -9,12 +9,15 @@ Rails.application.routes.draw do
   # get 'service-worker' => 'rails/pwa#service_worker', as: :pwa_service_worker
   # get 'manifest' => 'rails/pwa#manifest', as: :pwa_manifest
 
+  post 'sign_in', to: 'sessions#create'
+  delete 'sign_out', to: 'sessions#destroy'
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      namespace :auth do
-        resources :sign_up, only: :create
-        resources :sign_in, only: :create
-      end
+      # namespace :auth do
+      #   resources :sign_up, only: :create
+      #   resources :sign_in, only: :create
+      # end
       resources :users, only: [:index, :show, :create] do
         member do
           get :wallet
