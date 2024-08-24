@@ -3,15 +3,6 @@
 require 'faraday'
 require 'json'
 
-# client = LatestStockPrice::Client.new('4301f013a0mshf3a24894b4c9b32p14c0efjsna502b8ab8bf6')
-# client.price('NIFTY 50')
-
-# Get prices for multiple stock symbols
-# client.prices(['NIFTY 50', 'BAJFINANCEEQN', 'HDFCBANKEQN'])
-
-# Get prices for all available stocks
-# client.price_all
-
 module LatestStockPrice
   class Client
     BASE_URL = 'https://latest-stock-price.p.rapidapi.com'
