@@ -115,10 +115,10 @@ GEM
       railties (>= 5.0.0)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
-    faraday (2.10.1)
-      faraday-net_http (>= 2.0, < 3.2)
+    faraday (2.11.0)
+      faraday-net_http (>= 2.0, < 3.4)
       logger
-    faraday-net_http (3.1.1)
+    faraday-net_http (3.3.0)
       net-http
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -330,7 +330,7 @@ DEPENDENCIES
   error_highlight (>= 0.6.0)
   factory_bot_rails (~> 6.4)
   faker
-  faraday (~> 2.10, >= 2.10.1)
+  faraday (~> 2.11)
   jbuilder
   mysql2 (~> 0.5)
   puma (>= 5.0)
