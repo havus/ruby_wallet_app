@@ -63,5 +63,5 @@ group :test do
   gem 'factory_bot_rails', '~> 6.4'
   gem 'test-prof', '~> 1.0'
   gem 'faker'
-  gem 'webmock', '~> 3.23', '>= 3.23.1'
+  gem 'webmock', '~> 3.24'
 end
