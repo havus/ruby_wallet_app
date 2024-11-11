@@ -59,7 +59,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 6.0'
-  gem 'rspec-rails', '~> 6.1.0'
+  gem 'rspec-rails', '~> 7.1.0'
   gem 'factory_bot_rails', '~> 6.4'
   gem 'test-prof', '~> 1.0'
   gem 'faker'
